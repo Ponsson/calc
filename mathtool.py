@@ -16,3 +16,9 @@ if len(args) == 0 or args[0] == "--help":
 if args[0] != "solve":
     print("Ошибка: неизвестная команда. Для справки используйте 'python mathtool.py --help'.")
     sys.exit(1) 
+
+if len(args) == 1:
+    a = int(input("Введите А: "))
+    b = int(input("Введите B: "))
+    c = int(input("Введите C: "))
+    
