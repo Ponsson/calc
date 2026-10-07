@@ -1,5 +1,6 @@
 import math
 import sys
+max_value = 10000
 args = sys.argv[1:]
 if len(args) == 0 or args[0] == "--help":
     print('mathtool — консольное приложение для решения алгебраических уравнений вида A*x^2 + B*x + C = 0,\n'
@@ -50,7 +51,7 @@ else:
 
 
 
-if abs(a) > 10000 or abs(b) > 10000 or abs(c) > 10000:
+if abs(a) > max_value or abs(b) > max_value or abs(c) > max_value:
     print('Ошибка: значение вне допустимого диапазона', file=sys.stderr)
     sys.exit(1)
 
