@@ -26,25 +26,40 @@ if len(args) == 1:
     a = input("Введите A: ")
     b = input("Введите B: ")
     c = input("Введите C: ")
+    try:
+            a = int(a)
+    except ValueError:
+            print("Ошибка: заданный коэффициент не является числом", file=sys.stderr)
+            sys.exit(1)
+    try:
+            b = int(b)
+    except ValueError:
+            print("Ошибка: заданный коэффициент не является числом", file=sys.stderr)
+            sys.exit(1)
+    try:    
+            c = int(c)
+    except ValueError:
+            print("Ошибка: заданный коэффициент не является числом", file=sys.stderr)
+            sys.exit(1)
 elif len(args) == 7 and args [1] == "-a" and args[3] == "-b" and args[5] == '-c':
-     a = args[2]
-     b = args[5]
-     c = args[6]
-try:
-    a = int(input("Введите А: "))
-except ValueError:
-    print("Ошибка: заданный коэффициент не является числом", file=sys.stderr)
-    sys.exit(1)
-try:
-    b = int(input("Введите B: "))
-except ValueError:
-    print("Ошибка: заданный коэффициент не является числом", file=sys.stderr)
-    sys.exit(1)
-try:    
-    c = int(input("Введите C: "))
-except ValueError:
-    print("Ошибка: заданный коэффициент не является числом", file=sys.stderr)
-    sys.exit(1)
+    a = args[2]
+    b = args[4]
+    c = args[6]
+    try:
+        a = int(a)
+    except ValueError:
+        print("Ошибка: заданный коэффициент не является числом", file=sys.stderr)
+        sys.exit(1)
+    try:
+        b = int(b)
+    except ValueError:
+        print("Ошибка: заданный коэффициент не является числом", file=sys.stderr)
+        sys.exit(1)
+    try:    
+        c = int(c)
+    except ValueError:
+        print("Ошибка: заданный коэффициент не является числом", file=sys.stderr)
+        sys.exit(1)
 else:
     print('Ошибка: неверный формат ввода', file=sys.stderr)
     sys.exit(1)
