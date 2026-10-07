@@ -1,3 +1,4 @@
+import math
 import sys
 args = sys.argv[1:]
 if len(args) == 0 or args[0] == "--help":
@@ -17,6 +18,9 @@ if args[0] != "solve":
     print("Ошибка: неизвестная команда. Для справки используйте 'python mathtool.py --help'.")
     sys.exit(1) 
 
+
+
+
 if len(args) == 1:
     a = input("Введите A: ")
     b = input("Введите B: ")
@@ -25,23 +29,53 @@ elif len(args) == 7 and args [1] == "-a" and args[3] == "-b" and args[5] == '-c'
      a = args[2]
      b = args[5]
      c = args[6]
-
 try:
-        a = int(input("Введите А: "))
+    a = int(input("Введите А: "))
 except ValueError:
-        print("Ошибка: заданный коэффициент не является числом", file=sys.stderr)
-        sys.exit(1)
+    print("Ошибка: заданный коэффициент не является числом", file=sys.stderr)
+    sys.exit(1)
 try:
-        b = int(input("Введите B: "))
+    b = int(input("Введите B: "))
 except ValueError:
-            print("Ошибка: заданный коэффициент не является числом", file=sys.stderr)
-            sys.exit(1)
+    print("Ошибка: заданный коэффициент не является числом", file=sys.stderr)
+    sys.exit(1)
 try:    
-        c = int(input("Введите C: "))
+    c = int(input("Введите C: "))
 except ValueError:
-            print("Ошибка: заданный коэффициент не является числом", file=sys.stderr)
-            sys.exit(1)
+    print("Ошибка: заданный коэффициент не является числом", file=sys.stderr)
+    sys.exit(1)
+else:
+    print('Ошибка: неверный формат ввода', file=sys.stderr)
+    sys.exit(1)
+
+
 
 if abs(a) > 10000 or abs(b) > 10000 or abs(c) > 10000:
     print('Ошибка: значение вне допустимого диапазона', file=sys.stderr)
     sys.exit(1)
+
+
+
+if a == 0:
+    if b != 0:
+        print('Уравнение линейное')
+        x = -c / b
+        print(f'x = {x:.3f}')
+    else:
+        print('Ошибка: уравнение не существует', file=sys.stderr)
+        sys.exit(1)
+else:
+    print('Уравнение квадратное')
+    d = b ** 2 - 4 * a * c
+    print(f'D = {d}')
+    if d > 0:
+        x1 = (-b + math.sqrt(d)) / (2 * a)
+        x2 = (-b - math.sqrt(d)) / (2 * a)
+        print(f'x1 = {x1:.3f}')
+        print(f'x2 = {x2:.3f}')
+    elif d == 0:
+        x = -b / (2 * a)
+        print(f'x = {x:.3f}')
+    else: 
+        print('Действительных корней нет', file=sys.stderr)
+        sys.exit(1)
