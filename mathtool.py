@@ -18,7 +18,26 @@ if args[0] != "solve":
     sys.exit(1) 
 
 if len(args) == 1:
-    a = int(input("Введите А: "))
-    b = int(input("Введите B: "))
-    c = int(input("Введите C: "))
-    
+    a = input("Введите A: ")
+    b = input("Введите B: ")
+    c = input("Введите C: ")
+elif len(args) == 7 and args [1] == "-a" and args[3] == "-b" and args[5] == '-c':
+     a = args[2]
+     b = args[5]
+     c = args[6]
+
+try:
+        a = int(input("Введите А: "))
+except ValueError:
+        print("Ошибка: заданный коэффициент не является числом", file=sys.stderr)
+        sys.exit(1)
+try:
+        b = int(input("Введите B: "))
+except ValueError:
+            print("Ошибка: заданный коэффициент не является числом", file=sys.stderr)
+            sys.exit(1)
+try:    
+        c = int(input("Введите C: "))
+except ValueError:
+            print("Ошибка: заданный коэффициент не является числом", file=sys.stderr)
+            sys.exit(1)
