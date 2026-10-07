@@ -41,3 +41,7 @@ try:
 except ValueError:
             print("Ошибка: заданный коэффициент не является числом", file=sys.stderr)
             sys.exit(1)
+
+if abs(a) > 10000 or abs(b) > 10000 or abs(c) > 10000:
+    print('Ошибка: значение вне допустимого диапазона', file=sys.stderr)
+    sys.exit(1)
