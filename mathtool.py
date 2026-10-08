@@ -13,7 +13,7 @@ if len(args) == 0 or args[0] == "--help":
         '  python mathtool.py solve                    — ввод коэффициентов с клавиатуры\n'
         '  python mathtool.py solve -a 1 -b 1 -c 1     — решение с заданными коэффициентами\n'
         '\n'
-        'Коэффициенты A, B, C — целые числа, по модулю не превышающие 10000.')
+        f'Коэффициенты A, B, C — целые числа, по модулю не превышающие {max_value}.')
     sys.exit(0)
 if args[0] != "solve":
     print("Ошибка: неизвестная команда. Для справки используйте 'python mathtool.py --help'.")
@@ -63,8 +63,8 @@ if abs(a) > max_value or abs(b) > max_value or abs(c) > max_value:
 if a == 0:
     if b != 0:
         print('Уравнение линейное')
-        x = -c / b
-        print(f'x = {x:.3f}')
+        x = -c // b
+        print(f'x = {int(x)}')
     else:
         print('Ошибка: уравнение не существует', file=sys.stderr)
         sys.exit(1)
