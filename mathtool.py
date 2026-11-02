@@ -1,6 +1,6 @@
 import math
 import sys
-max_value = 10000
+import equation from calc
 args = sys.argv[1:]
 if len(args) == 0 or args[0] == "--help":
     print('mathtool — консольное приложение для решения алгебраических уравнений вида A*x^2 + B*x + C = 0,\n'
@@ -53,33 +53,8 @@ except ValueError:
     print("Ошибка: заданный коэффициент не является числом", file=sys.stderr)
     sys.exit(1)
 
-
-if abs(a) > max_value or abs(b) > max_value or abs(c) > max_value:
-    print('Ошибка: значение вне допустимого диапазона', file=sys.stderr)
-    sys.exit(1)
-
-
-
-if a == 0:
-    if b != 0:
-        print('Уравнение линейное')
-        x = -c // b
-        print(f'x = {int(x)}')
-    else:
-        print('Ошибка: уравнение не существует', file=sys.stderr)
-        sys.exit(1)
+kind, d, roots = equation.solve(a, b, c)
+if roots is None:
+    print(f'Уравнение {kind}\n D = {d}\n Действительных корней нет')
 else:
-    print('Уравнение квадратное')
-    d = b ** 2 - 4 * a * c
-    print(f'D = {d}')
-    if d > 0:
-        x1 = (-b + math.sqrt(d)) / (2 * a)
-        x2 = (-b - math.sqrt(d)) / (2 * a)
-        print(f'x1 = {x1:.3f}')
-        print(f'x2 = {x2:.3f}')
-    elif d == 0:
-        x = -b / (2 * a)
-        print(f'x = {x:.3f}')
-    else: 
-        print('Действительных корней нет', file=sys.stderr)
-        sys.exit(1)
+    print(f'Уравнение {kind}\n D = {d}\n x = {roots}')
