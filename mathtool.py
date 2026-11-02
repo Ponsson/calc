@@ -11,29 +11,20 @@ if args.command is None:
 
 
 
-
-if len(args) == 1:
+if args.a is None and args.b is None and args.c is None:
     try:
         a = int(input("Введите A: "))
-    except ValueError:
-        print("Ошибка: заданный коэффициент не является числом", file=sys.stderr)
-        sys.exit(1)
-    try:
         b = int(input("Введите B: "))
-    except ValueError:
-        print("Ошибка: заданный коэффициент не является числом", file=sys.stderr)
-        sys.exit(1)
-    try:
         c = int(input("Введите C: "))
     except ValueError:
         print("Ошибка: заданный коэффициент не является числом", file=sys.stderr)
         sys.exit(1)
-elif len(args) == 7 and args [1] == "-a" and args[3] == "-b" and args[5] == '-c':
-    a = args[2]
-    b = args[4]
-    c = args[6]
+elif args.a is not None and args.b is not None and args.c is not None:  
+    a = args.a
+    b = args.b
+    c = args.c
 else:
-    print('Ошибка: неверный формат ввода', file=sys.stderr)
+    print('Ошибка: введите все 3 коэффициента либо ни одного', file=sys.stderr)
     sys.exit(1)
 try:
     a = int(a)
@@ -55,6 +46,9 @@ if roots is None:
     print(f'Уравнение {kind}\n D = {d}\n Действительных корней нет')
 else:
     if kind == 'квадратное':
-        print(f'Уравнение {kind}\n D = {d}\n Действительные корни: {roots:.3f}')
+        if d == 0:
+            print(f'Уравнение {kind}\n D = {d}\n Действительный корень: {roots[0]:.3f}')
+        else:
+            print(f'Уравнение {kind}\n D = {d}\n Действительные корни: {roots[0]:.3f}, {roots[1]:.3f}')
     else:
-        print(f'Уравнение {kind}\n x = {roots:.3f}')
+        print(f'Уравнение {kind}\n Действительный корень: {roots:.3f}')

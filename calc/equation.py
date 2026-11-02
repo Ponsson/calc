@@ -12,15 +12,15 @@ def solve(a,b,c):
     if a == 0:
         if b != 0:  
             x = -c // b
-            return 'линейное', None, x 
+            return 'линейное', None, [x] 
     else:
         d = b**2 - 4*a*c
         if d < 0:
-            return 'квадратное', None, None
+            return 'квадратное', None, []
         elif d == 0:
             x = -b // (2*a)
-            return 'квадратное', d, x
+            return 'квадратное', d, [x]
         else:
-            x1 = (-b + math.sqrt(d)) // (2*a)
-            x2 = (-b - math.sqrt(d)) // (2*a)
-            return 'квадратное', d, [x1, x2]
+            x1 = (-b + math.sqrt(d)) / (2*a)
+            x2 = (-b - math.sqrt(d)) / (2*a)
+            return 'квадратное', d, [x1, x2] 
