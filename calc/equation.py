@@ -5,9 +5,9 @@ MAX_VALUE = 10000
 
 def check_coef(a, b, c):
     if abs(a) > MAX_VALUE or abs(b) > MAX_VALUE or abs(c) > MAX_VALUE:
-        raise ValueError("Ошибка: значение вне допустимого диапазона")
+        raise ValueError("значение вне допустимого диапазона")
     if a == 0 and b == 0:
-        raise ValueError("Ошибка: уравнение не существует")
+        raise ValueError("уравнение не существует")
 def solve(a,b,c):
     if a == 0:
         if b != 0:  
