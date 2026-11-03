@@ -1,5 +1,6 @@
 import sys
 from calc import equation
+from calc import stats
 from cli import build_parser
 
 def handle_solve(args):
@@ -52,7 +53,14 @@ def handle_stats(args):
             numbers = read_numbers(handle)
     else:
         numbers = read_numbers(sys.stdin)
-    print(numbers)
+    stats.check_nums(numbers)
+    print(f'Количество: {len(numbers)}')
+    for lab, func, form in stats.end:
+        value = func(numbers)
+        if value is None:
+            print(f'{lab}: не существует')
+        else:
+            print(f'{lab}: {value:{form}}')
     return 0
 
 
@@ -66,10 +74,6 @@ def read_numbers(src):
                 raise ValueError(f"значение {wd} не является числом")
             numbers.append(number)
     return numbers
-
-
-
-
 
 
 
