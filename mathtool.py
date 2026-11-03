@@ -46,6 +46,33 @@ def handle_solve(args):
         else:
             print(f'Уравнение {kind}\n Действительный корень: {roots:.3f}')
 
+def handle_stats(args):
+    if args.input:
+        with open(args.input, encoding = 'utf-8-sig') as handle:
+            numbers = read_numbers(handle)
+    else:
+        numbers = read_numbers(sys.stdin)
+    print(numbers)
+    return 0
+
+
+def read_numbers(src):
+    numbers = []
+    for line in src:
+        for wd in line.split():
+            try:
+                number = float(wd)
+            except ValueError:
+                raise ValueError(f"значение {wd} не является числом")
+            numbers.append(number)
+    return numbers
+
+
+
+
+
+
+
 def main(argv):
     parser = build_parser()
     args = parser.parse_args(argv)
@@ -55,7 +82,9 @@ def main(argv):
     try:
         if args.command == 'solve':
             return handle_solve(args)
-    except ValueError as error:
+        elif args.command == 'stats':
+            return handle_stats(args)
+    except (ValueError, OSError) as error:
         print(f"Ошибка: {error}", file=sys.stderr)
         return 1
 if __name__ == "__main__":
