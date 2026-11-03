@@ -2,12 +2,19 @@ import math
 MAX_VALUE = 10000
 
 
+def check_range(name, value):
+    if abs(value) > MAX_VALUE:
+        raise ValueError(f"значение {name} вне допустимого диапазона")
+
 
 def check_coef(a, b, c):
-    if abs(a) > MAX_VALUE or abs(b) > MAX_VALUE or abs(c) > MAX_VALUE:
-        raise ValueError("значение вне допустимого диапазона")
+    coefs = {'A': a, 'B': b, 'C': c}
+    for name, value in coefs.items():
+        check_range(name, value)
     if a == 0 and b == 0:
         raise ValueError("уравнение не существует")
+
+    
 def solve(a,b,c):
     if a == 0:
         if b != 0:  
