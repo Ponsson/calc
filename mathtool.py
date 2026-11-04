@@ -100,7 +100,7 @@ def handle_integrate(args):
     integrate.check_steps(args.steps)
 
     print(form)
-    res = integrate(func, args.lower, args.upper, args.steps)
+    res = integrate.integrate(func, args.lower, args.upper, args.steps)
     print(f'Значение интегралла: {res:.4f}')
     return 0
 
