@@ -16,6 +16,6 @@ def build_parser():
     series_parser = subparsers.add_parser('series', help = 'Сумма числового ряда', allow_abbrev = False)
     series_parser.add_argument('--func', required = True, choices = ['sqplus', 'rd'], help = 'Введите ряд для суммирования')
     group = series_parser.add_mutually_exclusive_group(required = True)
-    group.add_argumnet('--terms', type = int, help = 'Количество членов ряда')
+    group.add_argument('--terms', type = int, help = 'Количество членов ряда')
     group.add_argument('--eps', type = float, help = 'Точность вычислений')
     return parser
