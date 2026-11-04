@@ -9,17 +9,17 @@ def handle_solve(args):
             a_s = int(input("Введите A: "))
         except ValueError:
             raise ValueError("заданный коэффициент не является числом")
-        equation.check_coef('A', a_s)
+        equation.check_range('A', a_s)
         try:
             b_s = int(input("Введите B: "))
         except ValueError:
             raise ValueError("заданный коэффициент не является числом")
-        equation.check_coef('B', b_s)
+        equation.check_range('B', b_s)
         try:
             c_s = int(input("Введите C: "))
         except ValueError:
             raise ValueError("заданный коэффициент не является числом")
-        equation.check_coef('C', c_s)
+        equation.check_range('C', c_s)
     elif args.a is not None and args.b is not None and args.c is not None:
         a_s = args.a
         b_s = args.b
@@ -45,7 +45,7 @@ def handle_solve(args):
             else:
                 print(f'Уравнение {kind}\n D = {d}\n Действительные корни: {roots[0]:.3f}, {roots[1]:.3f}')
         else:
-            print(f'Уравнение {kind}\n Действительный корень: {roots:.3f}')
+            print(f'Уравнение {kind}\n Действительный корень: {roots[0]:.3f}')
 
 def handle_stats(args):
     if args.input:

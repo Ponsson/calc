@@ -38,7 +38,7 @@ def sum_sqr_dev(numbers):
 def var(numbers):
     return sum_sqr_dev(numbers) / len(numbers)
 def sqr_dev(numbers):
-    return math.sqrt(var(numbers)
+    return math.sqrt(var(numbers))
 def st_dev(numbers):
     if len(numbers) < 2:
         return 0
