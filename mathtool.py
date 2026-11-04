@@ -1,6 +1,7 @@
 import sys
 from calc import equation
 from calc import stats
+from calc import series
 from cli import build_parser
 
 def handle_solve(args):
@@ -75,6 +76,26 @@ def read_numbers(src):
             numbers.append(number)
     return numbers
 
+def handle_series(args):
+    term, form = series.FRMLS[args.func]
+
+    if args.terms is not None:
+        series.check_terms(args.terms)
+        res = series.sum_by_term(term, args.terms)
+        count = args.terms
+    else:
+        series.check_eps(args.eps)
+        res, count = series.sum_by_eps(term, args.eps)
+
+    print(form)
+    print(f'Количество членов ряда: {count}')
+    print(f'Сумма ряда: {res:.4f}')
+    return 0
+
+
+
+
+
 
 
 def main(argv):
@@ -88,6 +109,8 @@ def main(argv):
             return handle_solve(args)
         elif args.command == 'stats':
             return handle_stats(args)
+        elif args.command == 'series':
+            return handle_series(args)
     except (ValueError, OSError) as error:
         print(f"Ошибка: {error}", file=sys.stderr)
         return 1
