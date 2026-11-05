@@ -50,12 +50,18 @@ def handle_solve(args):
             print(f'Уравнение {kind}\n Действительный корень: {roots[0]:.3f}')
 
 def handle_stats(args):
+    numbers = []
     if args.input:
         with open(args.input, encoding = 'utf-8-sig') as handle:
             numbers = read_numbers(handle)
     else:
-        t = input()
-        numbers = read_numbers(t.split())
+        while True:
+            t = input()
+            if t != '':
+                numbers.extend(read_numbers(t.split()))
+            elif t == '':
+                break
+    
     stats.check_nums(numbers)
     print(f'Количество: {len(numbers)}')
     for lab, func, form in stats.end:
