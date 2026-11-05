@@ -54,7 +54,8 @@ def handle_stats(args):
         with open(args.input, encoding = 'utf-8-sig') as handle:
             numbers = read_numbers(handle)
     else:
-        numbers = read_numbers(sys.stdin)
+        t = input()
+        numbers = read_numbers(t.split())
     stats.check_nums(numbers)
     print(f'Количество: {len(numbers)}')
     for lab, func, form in stats.end:
