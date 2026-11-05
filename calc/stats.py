@@ -4,6 +4,7 @@ max_range = 20
 
 
 def check_nums(numbers):
+    """Проверяет список чисел: непустой, не длинее max_range, все конечные и не превышают по модулю max_value"""
     if len(numbers) == 0:
         raise ValueError("список чисел пуст")
     if len(numbers) > max_range:
@@ -16,52 +17,64 @@ def check_nums(numbers):
 
 
 def sum(numbers):
+    """Возвращает сумму чисел списка"""
     res = 0 
     for number in numbers:
         res += number
     return res
 def mean(numbers):
+    """Возвращает среднее арифметическое чисел в списке"""
     return sum(numbers) / len(numbers)
 def sum_squares(numbers):
+    """Возвращает сумму квадратов в списке"""
     res = 0
     for number in numbers:
         res += number**2
     return res
 def sqr_mean(numbers):
+    """Возвращает среднее квадратическое чисел в списке"""
     return math.sqrt(sum_squares(numbers) / len(numbers))
 def sum_sqr_dev(numbers):
+    """Возвращает сумму квадратов отклонений чисел от их среднего"""
     avg = mean(numbers)
     res = 0
     for number in numbers:
         res += (number - avg)**2
     return res
 def var(numbers):
+    """Возвращает дисперсию чисел в списке"""
     return sum_sqr_dev(numbers) / len(numbers)
 def sqr_dev(numbers):
+    """Возвращает СКО в списке"""
     return math.sqrt(var(numbers))
 def st_dev(numbers):
+    """Возвращает стандартное отклонение если в списке не менее 2 чисел"""
     if len(numbers) < 2:
         return 0
     return math.sqrt(sum_sqr_dev(numbers) / (len(numbers) - 1))
 def min(numbers):
+    """Возвращает наименьшее число в списке"""
     res = numbers[0]
     for number in numbers:
         if number < res:
             res = number
     return res
 def max(numbers):
+    """Возвращает наибольшее число в списке"""
     res = numbers[0]
     for number in numbers:
         if number > res:
             res = number
     return res
 def cntplus(numbers):
+    """Возвращает количество положительных чисел в списке"""
     res = 0
     for number in numbers:
         if number > 0:
             res += 1
     return res
 def cntmns(numbers):
+    """Возвращает количество отрицательных чисел в списке"""
     res = 0
     for number in numbers:
         if number < 0:

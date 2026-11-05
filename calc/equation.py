@@ -3,11 +3,12 @@ MAX_VALUE = 10000
 
 
 def check_range(name, value):
+    """Проверяет, превышает ли value MAX_VALUE по модулю"""
     if abs(value) > MAX_VALUE:
         raise ValueError(f"значение {name} вне допустимого диапазона")
 
-
 def check_coef(a, b, c):
+    """Проверяет коэффициенты на соответствие диапазону и наличию уравнения"""
     coefs = {'A': a, 'B': b, 'C': c}
     for name, value in coefs.items():
         check_range(name, value)
@@ -16,6 +17,7 @@ def check_coef(a, b, c):
 
     
 def solve(a,b,c):
+    """Решает уравнение A*x^2 + B*x + C = 0, возвращает вид, дискриминант и корни"""
     if a == 0:
         if b != 0:  
             x = -c / b
